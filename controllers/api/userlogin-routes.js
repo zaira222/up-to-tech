@@ -1,12 +1,12 @@
 const router = require('express').Router();
-const { UserLogin } = require('../../models');
+const { Userlogin } = require('../../models');
 
 
 router.get('/', (req, res) => {
-    UserLogin.findAll({
+    Userlogin.findAll({
         attributes: { exclude: ['password']}
     })
-    .then(dbUserLoginData => res.json(dbUserLoginData))
+    .then(dbUserloginData => res.json(dbUserloginData))
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
@@ -14,18 +14,18 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-    UserLogin.findOne({
+    Userlogin.findOne({
         attributes: { exclude: ['password']},
         where: {
             id: req.params.id
         }
     })
-    .then(dbUserLoginData => {
-        if(!dbUserLoginData) {
+    .then(dbUserloginData => {
+        if(!dbUserloginData) {
             res.status(404).json({message: 'No matches were found'});
             return;
         }
-        res.json(dbUserLoginData);
+        res.json(dbUserloginData);
     })
     .catch(err => {
         console.log(err);
@@ -34,30 +34,51 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    UserLogin.create({
+    Userlogin.create({
         username: req.body.username,
         email: req.body.email,
         password: req.body.password
     })
-    .then(dbUserLoginData => res.json(dbUserLoginData))
+    .then(dbUserloginData => res.json(dbUserloginData))
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
     });
 });
 
+router.post ('/login', (req, res) => {
+    Userlogin.findOne({
+        where: {
+            email: req.body.email
+        }
+    }).then(dbUserloginData => {
+        if(!dbUserloginData) {
+            res.status(400).json({ message: 'No matches found with that email'})
+            return;
+        }
+
+        const validPassword = dbUserloginData.checkPassword(req.body.password);
+        if(!validPassword) {
+            res.status(400).json({message: 'Password doesnt match!'});
+            return;
+        }
+        res.json({ user: dbUserloginData, message: 'Password matched our records'});
+    });
+})
+
 router.put('/:id', (req, res) => {
-    UserLogin.update(req.body, {
+    Userlogin.update(req.body, {
+        individualHooks: true,
         where: {
             id: req.params.id
         }
     })
-    .then(dbUserLoginData => {
-        if(!dbUserLoginData[0]) {
+    .then(dbUserloginData => {
+        if(!dbUserloginData[0]) {
             res.status(404).json({message: 'No matches found'})
             return;
         }
-        res.json(dbUserLoginData);
+        res.json(dbUserloginData);
     })
     .catch(err => {
         console.log(err);
@@ -66,17 +87,17 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-    UserLogin.destroy({
+    Userlogin.destroy({
         where: {
             id: req.params.id
         }
     })
-    .then(dbUserLoginData => {
-        if(!dbUserLoginData) {
+    .then(dbUserloginData => {
+        if(!dbUserloginData) {
             res.status(404).json({ message: 'No matches found'})
             return;
         }
-        res.json(dbUserLoginData);
+        res.json(dbUserloginData);
     })
     .catch(err => {
         console.log(err);

@@ -1,5 +1,5 @@
-const UserLogin = require('./UserLogin')
+const Userlogin = require('./Userlogin')
 
 
 
-module.exports = { UserLogin };
+module.exports = { Userlogin };
