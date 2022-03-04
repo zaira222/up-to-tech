@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Userlogin } = require('../../models');
+const { Userlogin, Blogs, Text} = require('../../models');
 
 
 router.get('/', (req, res) => {
@@ -18,7 +18,22 @@ router.get('/:id', (req, res) => {
         attributes: { exclude: ['password']},
         where: {
             id: req.params.id
-        }
+        }, 
+        include: [
+            {
+            model: Text,
+            attributes: ['id', 'title', 'Userlogin_id', 'created_at'],
+            },
+            {
+                model: Blogs,
+                attributes: ['id', 'content', 'Userlogin_id', 'text_id'],
+                include: {
+                    model: Text, 
+                    attributes: ['title']
+                }
+            },
+            
+        ]
     })
     .then(dbUserloginData => {
         if(!dbUserloginData) {

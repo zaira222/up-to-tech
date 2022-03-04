@@ -40,13 +40,13 @@ Userlogin.init(
         }
     },
     { hooks: {
-        async beforeCreate(newUserLoginData) {
-            newUserLoginData.password = await bcrypt.hash(newUserLoginData.password, 10);
-            return newUserLoginData;
+        async beforeCreate(newUserloginData) {
+            newUserloginData.password = await bcrypt.hash(newUserloginData.password, 10);
+            return newUserloginData;
         },
-        async beforeUpdate(updatedUserLoginData) {
-            updatedUserLoginData.password = await bcrypt.hash(updatedUserLoginData.password, 10);
-            return updatedUserLoginData;
+        async beforeUpdate(updatedUserloginData) {
+            updatedUserloginData.password = await bcrypt.hash(updatedUserloginData.password, 10);
+            return updatedUserloginData;
         }
     },
 
@@ -54,7 +54,7 @@ Userlogin.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'userlogin'
+    modelName: 'Userlogin'
 }
 );
 
