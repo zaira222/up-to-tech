@@ -1,4 +1,4 @@
-const Userlogin = require('./Userlogin.js');
+const Userlogin = require('./userlogin.js');
 const Text = require('./Text');
 const Blogs = require('./Blogs');
 
