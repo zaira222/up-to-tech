@@ -56,13 +56,17 @@ router.post('/', (req, res) => {
         email: req.body.email,
         password: req.body.password
     })
-    .then(dbUserloginData => res.json(dbUserloginData))
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
-});
+    .then(dbUserloginData => {
+        req.session.save(() => {
+            req.session.userlogin_id = dbUserloginData.id;
+            req.session.username = dbUserloginData.username;
+            req.session.loggedIn = true;
 
+            res.json(dbUserloginData);
+        })
+    
+});
+})
 router.post ('/login', (req, res) => {
     Userlogin.findOne({
         where: {
@@ -79,8 +83,14 @@ router.post ('/login', (req, res) => {
             res.status(400).json({message: 'Password doesnt match!'});
             return;
         }
+        req.session.save(() => {
+            req.session.userlogin_id = dbUserloginData.id;
+            req.session.username = dbUserloginData.username;
+            req.session.loggedIn = true;
+        
         res.json({ user: dbUserloginData, message: 'Password matched our records'});
     });
+})
 })
 
 router.put('/:id', (req, res) => {
@@ -121,5 +131,17 @@ router.delete('/:id', (req, res) => {
         res.status(500).json(err);
     });
 });
+
+
+router.post('/logout', (req, res) => {
+    if(req.session.loggedIn) {
+        req.session.destroy(() => {
+            res.status(204).end();
+        });
+    } 
+    else {
+        res.status(404).end();
+    }
+})
 
 module.exports = router;

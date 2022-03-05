@@ -24,7 +24,21 @@ router.post('/', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-
+    Blogs.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(dbBlogsData => {
+        if(!dbBlogsData) {
+            res.status(404).json({ message: 'No matches found'})
+            return;
+        }
+        res.json(dbBlogsData);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
 });
-
 module.exports = router;

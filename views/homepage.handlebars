@@ -1,1 +1,19 @@
-<div> You are on the homepage </div>
+<ol class="text-list">
+    {{#each text as |text|}}
+    <li>
+        <article class="text">
+        <div class="title">
+            {{text.title}}
+        </div>
+        <div class="meta">
+            {{text.created_at}}
+            |
+            <a href="/text/{{text.id}}">{{text.contents.length}} content(s)</a>
+        </div>
+        <div class="user">
+            {{text.userlogin.username}}
+        </div>
+        </article>
+    </li>
+    {{/each}}
+</ol>

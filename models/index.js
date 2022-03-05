@@ -1,8 +1,8 @@
-const Userlogin = require('./userlogin.js');
+
 const Text = require('./Text');
 const Blogs = require('./Blogs');
 
-
+const Userlogin = require('./Userlogin');
 Userlogin.hasMany(Text, {
     foreignKey: 'userlogin_id',
   
