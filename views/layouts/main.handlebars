@@ -11,12 +11,12 @@
     <body>
         <div class="wrapper">
             <header>
-                <h1>Your Dashboard</h1>
+                <h1>Up To Tech</h1>
             </header>
             <nav>               
                  <a href="/">Home</a>
                  {{#if loggedIn}}
-                 <a href="/">Home</a>
+                 <a href="/"></a>
                  <a href="/dashboard">Dashboard</a>                
                 <button id="logout" class="btn">logout</button>   
                 {{else}} 
@@ -31,7 +31,6 @@
                 {{{body}}}
             </main>
             <footer>
-                See you next time!
             </footer>
         </div>
         {{#if loggedIn}}

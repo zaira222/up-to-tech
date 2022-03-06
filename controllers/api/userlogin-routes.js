@@ -54,7 +54,6 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     Userlogin.create({
         username: req.body.username,
-        email: req.body.email,
         password: req.body.password
     })
     .then(dbUserloginData => {
@@ -71,11 +70,11 @@ router.post('/', (req, res) => {
 router.post ('/login',  (req, res) => {
     Userlogin.findOne({
         where: {
-            email: req.body.email
+            username: req.body.username
         }
     }).then(dbUserloginData => {
         if(!dbUserloginData) {
-            res.status(400).json({ message: 'No matches found with that email'})
+            res.status(400).json({ message: 'No matches found with that username'})
             return;
         }
 
@@ -97,11 +96,11 @@ router.post ('/login',  (req, res) => {
 router.post ('/signup',  (req, res) => {
     Userlogin.findOne({
         where: {
-            email: req.body.email
+            username: req.body.username
         }
     }).then(dbUserloginData => {
         if(!dbUserloginData) {
-            res.status(400).json({ message: 'No matches found with that email'})
+            res.status(400).json({ message: 'No matches found with that username'})
             return;
         }
 

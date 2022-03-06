@@ -16,7 +16,7 @@ router.post('/', withAuth, (req, res) => {
     if(req.session) {
     Blogs.create({
         content: req.body.content,
-        userlogin_id: req.body.userlogin_id,
+        userlogin_id: req.session.userlogin_id,
         text_id: req.body.text_id
     })
     .then(dbBlogsData => res.json(dbBlogsData))
