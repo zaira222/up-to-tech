@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Userlogin } = require('../../models');
 const {  Text} = require('../../models');
 const { Blogs } = require('../../models');
+const withAuth = require('../../utils/authorization');
 
 
 router.get('/', (req, res) => {
@@ -67,7 +68,7 @@ router.post('/', (req, res) => {
     
 });
 })
-router.post ('/login', (req, res) => {
+router.post ('/login',  (req, res) => {
     Userlogin.findOne({
         where: {
             email: req.body.email
@@ -93,7 +94,7 @@ router.post ('/login', (req, res) => {
 })
 })
 
-router.post ('/signup', (req, res) => {
+router.post ('/signup',  (req, res) => {
     Userlogin.findOne({
         where: {
             email: req.body.email
@@ -119,7 +120,7 @@ router.post ('/signup', (req, res) => {
 })
 })
 
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
     Userlogin.update(req.body, {
         individualHooks: true,
         where: {
@@ -139,7 +140,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
     Userlogin.destroy({
         where: {
             id: req.params.id
@@ -159,7 +160,7 @@ router.delete('/:id', (req, res) => {
 });
 
 
-router.post('/logout', (req, res) => {
+router.post('/logout', withAuth, (req, res) => {
     if(req.session.loggedIn) {
         req.session.destroy(() => {
             res.status(204).end();

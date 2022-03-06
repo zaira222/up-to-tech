@@ -18,7 +18,7 @@ const sess = {
     store: new SequelizeStore({
         db: sequelize
     })
-};
+}
 
 app.use(session(sess));
 app.use(express.json());

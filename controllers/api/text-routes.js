@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Text,  Userlogin, Blogs } = require('../../models');
+const withAuth = require('../../utils/authorization');
 
 router.get('/', (req, res) => {
     Text.findAll({
@@ -48,10 +49,10 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
     Text.create({
         title: req.body.title,
-        Userlogin_id: req.body.Userlogin_id
+        Userlogin_id: req.session.Userlogin_id
 
     })
     .then(dbTextData => res.json(dbTextData))
@@ -61,7 +62,7 @@ router.post('/', (req, res) => {
     });
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
     Text.update(
         {
             title: req.body.title
@@ -83,7 +84,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
     Text.destroy({
         where: {
             id: req.params.id

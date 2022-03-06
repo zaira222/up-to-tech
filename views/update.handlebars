@@ -1,0 +1,27 @@
+<article>
+    <a href="/dashboard"> &larr; Back to dashboard</a>
+    <h2>
+        Update Content
+    </h2>
+    <form class="update-text-form">
+        <div>
+            <input name="text-title" type="text" value="{{text.title}}" />
+        </div>
+        <div>
+            {{text.created_at}}
+            |
+            <a href="/text/{{text.id}}">{{text.blogs.length}}</a>
+        </div>
+        <button type="submit">Save Content</button>
+        <button type="button" class="delete-text-btn">Delete Content</button>
+    </form>
+</article>
+
+<form class="content-form">
+    <div>
+        <textarea name="content-body"></textarea>
+    </div>
+    <div>
+        <button type="submit">add content</button>
+    </div>
+</form>

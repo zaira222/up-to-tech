@@ -1,5 +1,7 @@
 const router = require('express').Router();
 const { Blogs } = require('../../models');
+const withAuth = require('../../utils/authorization');
+
 
 router.get('/', (req, res) => {
     Blogs.findAll()
@@ -10,7 +12,7 @@ router.get('/', (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
     if(req.session) {
     Blogs.create({
         content: req.body.content,
@@ -25,7 +27,7 @@ router.post('/', (req, res) => {
 }
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
     Blogs.destroy({
         where: {
             id: req.params.id

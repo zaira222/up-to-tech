@@ -12,5 +12,24 @@
         <label for="content-body">Content</label>
         <input id="content-body" name="content-body" />
     </div>
+    <button type="submit" class="btn">Create Content</button>
     </form>
 </section>
+
+{{#if text.length}}
+<section>
+    <h2>
+        Your Content
+    </h2>
+    <ol>
+        {{#each text as |text|}}
+        <li>
+            {{> text text}}
+            <a href="/dashboard/edit/{{text.id}}" class="update">Update Content</a>
+        </li>
+        {{/each}}
+    </ol>
+    {{/if}}
+</section>
+
+<script src="/javascript/adding.js"></script>

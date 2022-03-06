@@ -16,7 +16,7 @@ Text.init(
             allowNull: false
         },
 
-        Userlogin_id: {
+        userlogin_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
