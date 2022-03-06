@@ -13,11 +13,15 @@
             <header>
                 <h1>Your Dashboard</h1>
             </header>
-            <nav>
-                <a href="/">Home</a>
-                <a href="/dashboard">Dashboard</a>
-                <button id="logout" class="btn">logout</button>         
+            <nav>               
+                 <a href="/">Home</a>
+                 {{#if loggedIn}}
+                 <a href="/dashboard">Dashboard</a>                
+                <button id="logout" class="btn">logout</button>   
+                {{else}}      
                 <a href="/login">Login</a>
+                <a href="/signup"></a>
+                {{/if}}
 
             </nav>
             <main>
@@ -27,7 +31,9 @@
                 See you next time!
             </footer>
         </div>
+        {{#if loggedIn}}
         <script src="/javascript/logout.js"></script>
+        {{/if}}
     </body>
 
 </html>

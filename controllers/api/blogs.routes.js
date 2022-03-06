@@ -11,6 +11,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
+    if(req.session) {
     Blogs.create({
         content: req.body.content,
         userlogin_id: req.body.userlogin_id,
@@ -21,6 +22,7 @@ router.post('/', (req, res) => {
         console.log(err);
         res.status(400).json(err);
     });
+}
 });
 
 router.delete('/:id', (req, res) => {

@@ -1,0 +1,16 @@
+{{#if loggedIn}}
+<form class="blogs-form">
+    <div>
+        <textarea name="blogs-body"></textarea>
+    </div>
+
+    <div>
+        <button type="submit">add comment</button>
+    </div>
+</form>
+{{/if}}
+
+{{> blogs text.content}}
+{{#if loggedIn}}
+<script src="/javascript/blogs.js"></script>
+{{/if}}

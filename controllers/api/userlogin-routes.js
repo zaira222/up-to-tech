@@ -93,6 +93,32 @@ router.post ('/login', (req, res) => {
 })
 })
 
+router.post ('/signup', (req, res) => {
+    Userlogin.findOne({
+        where: {
+            email: req.body.email
+        }
+    }).then(dbUserloginData => {
+        if(!dbUserloginData) {
+            res.status(400).json({ message: 'No matches found with that email'})
+            return;
+        }
+
+        const validPassword = dbUserloginData.checkPassword(req.body.password);
+        if(!validPassword) {
+            res.status(400).json({message: 'Password doesnt match!'});
+            return;
+        }
+        req.session.save(() => {
+            req.session.userlogin_id = dbUserloginData.id;
+            req.session.username = dbUserloginData.username;
+            req.session.loggedIn = true;
+        
+        res.json({ user: dbUserloginData, message: 'Password matched our records'});
+    });
+})
+})
+
 router.put('/:id', (req, res) => {
     Userlogin.update(req.body, {
         individualHooks: true,
@@ -101,7 +127,7 @@ router.put('/:id', (req, res) => {
         }
     })
     .then(dbUserloginData => {
-        if(!dbUserloginData[0]) {
+        if(!dbUserloginData) {
             res.status(404).json({message: 'No matches found'})
             return;
         }
