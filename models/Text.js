@@ -16,7 +16,7 @@ Text.init(
             allowNull: false
         },
 
-        userlogin_id: {
+        Userlogin_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
@@ -34,3 +34,4 @@ Text.init(
 );
 
 module.exports = Text;
+
