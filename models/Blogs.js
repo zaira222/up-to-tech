@@ -18,10 +18,10 @@ Blogs.init(
                 len:[1]
             }
         },
-        userlogin_id: {
+        Userlogin_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'userlogin',
+                model: 'Userlogin',
                 key: 'id'
             }
         },

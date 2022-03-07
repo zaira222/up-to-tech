@@ -3,18 +3,18 @@ const Blogs = require('./Blogs');
 
 const Userlogin = require('../models/Userlogin');
 Userlogin.hasMany(Text, {
-    foreignKey: 'userlogin_id',
+    foreignKey: 'Userlogin_id',
   
 });
 
 Text.belongsTo(Userlogin, {
-    foreignKey: 'userlogin_id',
+    foreignKey: 'Userlogin_id',
 
 });
 
 
 Blogs.belongsTo(Userlogin, {
-    foreignKey: 'userlogin_id',
+    foreignKey: 'Userlogin_id',
 });
 
 Blogs.belongsTo(Text, {
@@ -22,7 +22,7 @@ Blogs.belongsTo(Text, {
 });
 
 Userlogin.hasMany(Blogs, {
-    foreignKey: 'userlogin_id'
+    foreignKey: 'Userlogin_id'
 });
 
 Text.hasMany(Blogs, {

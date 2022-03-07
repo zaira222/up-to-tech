@@ -43,7 +43,7 @@ Userlogin.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'userlogin'
+    modelName: 'Userlogin'
 }
 );
 

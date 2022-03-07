@@ -6,6 +6,14 @@ router.get('/', (req, res) => {
     Text.findAll({
         attributes: ['id', 'title', 'created_at'],
         include: [
+            {
+                model: Blogs,
+                attributes: ['id', 'content', 'userlogin_id', 'text_id'],
+                include: {
+                    model: Userlogin, 
+                    attributes: ['username']
+            },
+        },
         {
                 model: Userlogin,
                 attributes: ['username']
@@ -29,6 +37,14 @@ router.get('/:id', (req, res) => {
         }, 
         attributes: ['id', 'title', 'created_at'],
         include: [ 
+            {
+                model: Blogs,
+                attributes: ['id', 'content', 'userlogin_id', 'text_id'],
+                include: {
+                    model: Userlogin, 
+                    attributes: ['username']
+            },
+        },
         {
                 model: Userlogin,
                 attributes: ['username']
@@ -49,10 +65,11 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.post('/', withAuth, (req, res) => {
+router.post('/', withAuth ,(req, res) => {
     Text.create({
         title: req.body.title,
-        Userlogin_id: req.session.Userlogin_id
+        userlogin_id: req.session.userlogin_id,
+        Userlogin_id: req.body.Userlogin_id
 
     })
     .then(dbTextData => res.json(dbTextData))
