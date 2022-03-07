@@ -10,25 +10,36 @@
 
     <body>
         <div class="wrapper">
-            <header>
-                <h1>Up To Tech</h1>
-            </header>
+            <header>   
+                 {{#if loggedIn}}    
+               <h1> Your Dashboard </h1>  
+                 {{else}} 
+                
+                 <h1> Up To Tech </h1>   
+                   {{/if}}
+                </header>    
             <nav>               
                  <a href="/">Home</a>
                  {{#if loggedIn}}
+                
                  <a href="/"></a>
-                 <a href="/dashboard">Dashboard</a>                
+                 <a href="/dashboard">Dashboard</a>  
                 <button id="logout" class="btn">logout</button>   
+                   
                 {{else}} 
+                
                 <a href="/dashboard">Dashboard</a>    
                 <a href="/login">Login</a>
                 <a href="/logout">Logout</a>
                 <a href="/signup"></a>
+               
                 {{/if}}
 
             </nav>
             <main>
                 {{{body}}}
+
+
             </main>
             <footer>
             </footer>

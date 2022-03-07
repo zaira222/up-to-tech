@@ -5,3 +5,14 @@
     </li>
     {{/each}}
 </ol>
+
+   <div>
+       {{#if loggedIn}}
+         <button type="submit" class="text-submit"> + New Post</button>
+         {{/if}}
+    </div>
+
+    {{#if loggedIn}}
+    <script src="/javascript/adding.js"></script>
+    <script src="/javascript/blogs.js"></script>
+    {{/if}}
