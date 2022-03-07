@@ -1,29 +1,27 @@
 <article>
-    <a href="/dashboard"> &larr; Back to dashboard</a>
+    <a href="/dashboard"></a>
     <h2>
-        Update Content
+        Edit Post
     </h2>
     <form class="update-text-form">
         <div>
+            <h3>Title:</h3>
             <input name="text-title" type="text" value="{{text.title}}" />
         </div>
         <div>
-            {{text.created_at}}
-            |
-            <a href="/text/{{text.Userlogin_id}}">{{text.blogs.length}}</a>
+            <h3>Content</h3>
+            <input name="content" type="text" value="{{blogs.content}}" />
         </div>
-        <div>
-        <button type="submit">Save Content</button>
-        <button type="button" class="delete-text-btn">Delete Content</button>
-        </div>
+    
+        <button type="submit" class="save-update">Update Post</button>
+        <button type="button" class="delete">Delete</button>
+    
     </form>
 </article>
 
-<form class="content-form">
-    <div>
-        <textarea name="content-body"></textarea>
-    </div>
-    <div>
-        <button type="submit">add content</button>
-    </div>
-</form>
+
+
+<script src="/javascript/delete.js"></script>
+<script src="/javascript/update.js"></script>
+<script src="/javascript/blogs.js"></script>
+<script src="/javascript/adding.js"></script>

@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
     });
 });
 
-router.post('/', withAuth, (req, res) => {
+router.post('/', (req, res) => {
     if(req.session) {
     Blogs.create({
         content: req.body.content,

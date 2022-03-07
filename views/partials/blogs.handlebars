@@ -1,14 +1,12 @@
 <div class="blogs">
     {{#each this}}
-<section class="blogs">
-    <div class="meta">
-        {{created_at}}
-
+<article class="border">
+    <div class="Blogs">
+      Posted by {{login.username}} on  {{format_date created_at}}
     </div>
-
-<div class="blogs">
-        {{contents}}
+    <div class="info">
+        {{content}}
     </div>
-</section>
+</article>
  {{/each}}
 </div>

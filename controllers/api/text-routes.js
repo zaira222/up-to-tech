@@ -65,7 +65,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.post('/', withAuth ,(req, res) => {
+router.post('/',  (req, res) => {
     Text.create({
         title: req.body.title,
         userlogin_id: req.session.userlogin_id,

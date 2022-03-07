@@ -4,6 +4,7 @@ const {Blogs, Text, Userlogin} = require('../models');
 const withAuth = require('../utils/authorization');
 
 router.get('/', withAuth, (req, res) => {
+    console.log(req.session);
     Text.findAll({
         where: {
         userlogin_id: req.session.userlogin_id

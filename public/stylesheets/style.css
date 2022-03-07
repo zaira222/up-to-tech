@@ -107,7 +107,100 @@ h2 {
     color: white;
     width: 10%;
     margin-left: 550px;
-    margin-top: 250px;
+    margin-top: 150px;
     
     
+}
+
+.text {
+    background-color: rgb(63, 48, 48);
+    word-spacing: 500px;
+    border: 3px solid rgb(63, 48, 48);
+    border-radius: 12px;
+    padding: 5px;
+    box-shadow: 5px 5px;
+    margin-top: 25px;
+    color: white;
+    width: 80%;
+    margin-left: 75px;
+}
+
+.title {
+    background-color: rgb(63, 48, 48);
+    color: white;
+    
+}
+
+.save-update {
+    background-color: rgb(63, 48, 48);
+    width: 80%;
+}
+
+.update-text-form {
+    word-spacing: 500px;
+    padding: 5px;
+    margin-top: 25px;
+    color: white;
+    width: 80%;
+    margin-left: 75px;
+}
+
+a {
+    background-color: rgb(63, 48, 48);
+    color: white;
+    text-decoration: none;
+}
+
+.blogs-form {
+    border: 5px rgb(63, 48, 48) solid;
+    margin: 50px;
+    padding: 0;
+}
+
+.add-comment {
+    background-color: rgb(63, 48, 48);
+    color: white;
+    width: 80%;
+    margin-left: 50px;
+    margin-top: 150px;
+    
+}
+
+.blogs-body {
+    margin-top: 50px;
+    margin-left: 50px;
+    width: 80%;
+    height: 50%;
+}
+
+.Blogs {
+    background-color: rgb(63, 48, 48);
+    color:rgb(148, 209, 148);
+    word-spacing: 20px;
+
+}
+
+.border {
+    border: 2px solid rgb(63, 48, 48);
+    margin: 50px;
+    margin-top: -10px;
+}
+
+#text {
+    margin-left: -50px;
+}
+
+
+.delete {
+    background-color: rgb(63, 48, 48);
+    width: 95%;
+}
+
+.save-update {
+    width: 95%;
+}
+
+article {
+    border: 4px solid rgb(63, 48, 48);
+    color:rgb(148, 209, 148)
 }
