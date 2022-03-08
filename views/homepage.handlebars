@@ -1,14 +1,12 @@
 
 {{#if text.length}}
 <section>
-    <h2>
-        Your Content
-    </h2>
     <ol class="text-list"></ol>
         {{#each text as |text|}}
         <li>
             <a href="/text/{{text.id}}" class="blogs">{{> text text}}</a>
         </li>
+        <li class="explain">   {{blogs.content}}<li>
         {{/each}}
     </ol>
     {{/if}}

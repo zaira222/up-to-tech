@@ -15,10 +15,10 @@ async function addingFormHandler(event) {
         }
     });
     if(response.ok) {
-        document.location.replace('/dashboard');
+        document.location.replace('/adding');
     } else {
         alert(response.statusText);
     }
 }
 
-document.querySelector('.new-content-form').addEventListener('submit', addingFormHandler);
+document.querySelector('.new').addEventListener('submit', addingFormHandler);
