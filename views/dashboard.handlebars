@@ -1,43 +1,45 @@
 {{#if text.length}}
-<section>
+<section class="dash">
   
-    <ol>
+    <ol class="update-list"></ol>
         {{#each text as |text|}}
         <li>
-            <a href="/dashboard/edit/{{text.id}}" class="update-content"></a>
+            
+            <a href="/dashboard/edit/{{id}}" class="update-content">{{> text text}}</a>
         </li>
-                <li class="explain">   {{content}}<li>
-
+        <li class="explain">{{blogs.content}}</li>
         {{/each}}
     </ol>
     {{/if}}
 </section>
 
- <div>
+  <div>
      
-
-
-
-
-<article>
+  <section>
+ 
+    </form>
+</section>
         
+    
 
-
+<article class="newest">
     <form class="new-content">
         <div>
             <label for="text-title">Title:</label>
-            <input name="text-title" type="text" value="{{text.title}}" />
+            <input name="text-title" type="text" value="{{title}}" />
         </div>
         <div>
             <label for="content-body">Content</label>
             <input name="content-body" type="text" value="{{content}}" />
         </div>
-        <a href="/text/" class="new-content"></a>
             <button type="submit" class="new">save</button>
     </form>
 </article>
 
   {{#if loggedIn}}
-    <script src="/javascript/adding.js"></script>
-   
+<script src="/javascript/adding.js"></script>
+<script src="/javascript/delete.js"></script>
+<script src="/javascript/update.js"></script>
+<script src="/javascript/blogs.js"></script>
     {{/if}}
+

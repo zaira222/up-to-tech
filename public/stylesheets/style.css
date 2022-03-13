@@ -274,3 +274,11 @@ div.info {
 .title {
     margin-top: 20px;
 }
+
+.dash {
+    margin-top: -20px;
+}
+
+.newest {
+    margin-top: 20px;
+}
