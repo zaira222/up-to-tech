@@ -3,6 +3,7 @@ async function updateFormHandler(event) {
 
 
     const title = document.querySelector('input[name="text-title"]').value.trim();
+    const content = document.querySelector('input[name="content"]').value.trim();
     const id = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1
     ];
@@ -10,7 +11,9 @@ async function updateFormHandler(event) {
     const response = await fetch(`/api/text/${id}`, {
         method: 'PUT',
         body: JSON.stringify({
-            title
+            title,
+            content,
+            id
         }),
         headers: {
             'Content-Type': 'application/json'

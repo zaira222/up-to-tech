@@ -1,26 +1,17 @@
-{{#if text.length}}
-<section class="dash">
-  
-    <ol class="update-list"></ol>
-        {{#each text as |text|}}
-        <li>
-            
-            <a href="/dashboard/edit/{{id}}" class="update-content">{{> text text}}</a>
-        </li>
-        <li class="explain">{{blogs.content}}</li>
-        {{/each}}
-    </ol>
-    {{/if}}
-</section>
+<ol class="dashboard-edit">
+    {{#each text as |text|}}
 
-  <div>
-     
-  <section>
- 
-    </form>
-</section>
-        
-    
+    <li>
+        <article class="editing">
+            <div class="edit-work">
+                {{title}}  {{content}}
+            </div>
+        </article>
+    </li>
+    {{/each}}
+</ol>
+
+
 
 <article class="newest">
     <form class="new-content">
@@ -36,10 +27,68 @@
     </form>
 </article>
 
-  {{#if loggedIn}}
-<script src="/javascript/adding.js"></script>
-<script src="/javascript/delete.js"></script>
-<script src="/javascript/update.js"></script>
-<script src="/javascript/blogs.js"></script>
+
+    
+{{#if text.length}}
+{{> text update.blogs}}
+<section>
+  
+    <ol>
+        {{#each text as |text|}}
+        <li>
+            <a href="/dashboard/edit/{id}" class="update-content">{{> text}}</a>
+        </li>
+        {{/each}}
+    </ol>
     {{/if}}
+</section>
+
+
+        
+  
+ 
+
+
+{{#if loggedIn}}
+<script src="/javascript/blogs.js"></script>
+<script src="/javascript/adding.js"></script>
+
+{{/if}}
+
+
+
+{{#if text.length}}
+<section>
+    <ol class="text-list"></ol>
+        {{#each text as |text|}}
+        <li>
+            <a href="/text/{{text.id}}" class="blogs">{{> text text}}</a>
+        </li>
+        <li class="explain">   {{blogs.content}}<li>
+        {{/each}}
+    </ol>
+    {{/if}}
+    {{content}}
+</section>
+
+  <div>
+
+
+{{#if loggedIn}}
+        
+      {{> blogs text.blogs}}
+  <article>
+    
+<form class="blogs-form">
+    
+    <div>
+
+</form>
+</article>
+{{/if}}
+
+{{#if loggedIn}}
+<script src="/javascript/blogs.js"></script>
+{{/if}}
+
 
