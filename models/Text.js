@@ -18,7 +18,7 @@ Text.init(
 
         Userlogin_id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
             references: {
                 model: 'Userlogin',
                 key: 'id',

@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const res = require('express/lib/response');
 const sequelize = require('../config/connection');
 const {Blogs, Text, Userlogin} = require('../models');
 const withAuth = require('../utils/authorization');
@@ -67,4 +68,9 @@ router.get('/edit/:id', withAuth, (req,res) => {
         res.status(500).json(err);
     });
 });
+
+
+
+
+
 module.exports = router;

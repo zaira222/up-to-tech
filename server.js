@@ -28,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 const hbs = exphbs.create({helpers});
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+app.set('views', path.join(__dirname, 'views'))
 
 app.use(require('./controllers/'));
 

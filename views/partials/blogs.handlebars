@@ -2,11 +2,14 @@
     {{#each this}}
 <article class="border">
     <div class="Blogs">
-      Posted by {{login.username}} on  {{format_date created_at}}
+     {{title}} Posted by {{userlogin_id.username}} on         {{format_date created_at}}
     </div>
     <div class="info">
         {{content}}
+        {{text}}
     </div>
 </article>
  {{/each}}
 </div>
+
+

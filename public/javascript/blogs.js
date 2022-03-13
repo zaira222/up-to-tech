@@ -1,13 +1,13 @@
 async function blogsFormHandler(event) {
     event.preventDefault();
 
-    const content = document.querySelector('textarea[name="content-body"]').value.trim();
+    const content = document.querySelector('textarea[name="blogs-body"]').value.trim();
 
     const text_id = window.location.toString().split('/')[
         window.location.toString().split('/').length -1
     ];
     if(content) {
-        const response = await fetch('/api/content', {
+        const response = await fetch('/api/blogs', {
             method: 'POST',
             body: JSON.stringify({
                 text_id,

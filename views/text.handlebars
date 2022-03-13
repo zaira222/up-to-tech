@@ -1,24 +1,3 @@
-
-{{#if loggedIn}}
-<section>
-    <ol class="text-list"></ol>
-        {{#each text as |text|}}
-        <li>
-            <a href="/text/{{text.id}}" class="blogs">{{> text title.text}}</a>
-        </li>
-        <li class="explain">   {{content}}<li>
-        {{/each}}
-    </ol>
-    {{/if}}
-</section>
-
-  <div>
-
-{{#if loggedIn}}
-<script src="/javascript/blogs.js"></script>
-<script src="/javascript/adding.js"></script>
-{{/if}}
-
 {{#if loggedIn}}
         
       {{> blogs text.blogs}}
@@ -35,9 +14,9 @@
 </form>
 </article>
 {{/if}}
-    {{> blogs text.content}}
-
 
 {{#if loggedIn}}
 <script src="/javascript/blogs.js"></script>
 {{/if}}
+
+

@@ -4,7 +4,7 @@ const withAuth = require('../../utils/authorization');
 
 router.get('/', (req, res) => {
     Text.findAll({
-        attributes: ['id', 'title', 'created_at'],
+        attributes: ['title', 'created_at'],
         include: [
             {
                 model: Blogs,
@@ -68,6 +68,7 @@ router.get('/:id', (req, res) => {
 router.post('/',  (req, res) => {
     Text.create({
         title: req.body.title,
+        content: req.body.content,
         userlogin_id: req.session.userlogin_id,
         Userlogin_id: req.body.Userlogin_id
 

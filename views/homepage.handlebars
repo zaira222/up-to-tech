@@ -6,15 +6,35 @@
         <li>
             <a href="/text/{{text.id}}" class="blogs">{{> text text}}</a>
         </li>
-        <li class="explain">   {{blogs.content}}<li>
+        <li class="explain">   {{content}}<li>
         {{/each}}
     </ol>
     {{/if}}
+    {{content}}
 </section>
 
   <div>
 
 {{#if loggedIn}}
 <script src="/javascript/blogs.js"></script>
-<script src="/javascript/adding.js"></script>
 {{/if}}
+
+
+{{#if loggedIn}}
+        
+      {{> blogs text.blogs}}
+  <article>
+    
+<form class="blogs-form">
+    
+    <div>
+
+</form>
+</article>
+{{/if}}
+
+{{#if loggedIn}}
+<script src="/javascript/blogs.js"></script>
+{{/if}}
+
+
